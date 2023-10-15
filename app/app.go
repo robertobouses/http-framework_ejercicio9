@@ -13,6 +13,7 @@ type APP interface {
 	FindMinAndMaxCubic(cubics []int) (int, int)
 	DeleteAllMeasurement() error
 	DeleteEmptyMeasurement() error
+	CreateValue(entity.Value) error
 }
 
 type Service struct {

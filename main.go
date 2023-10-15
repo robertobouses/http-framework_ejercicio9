@@ -85,6 +85,12 @@ func main() {
 		httpController.DeleteAllMeasurement(ctx)
 	})
 
+	server.POST("/value", func(ctx *gin.Context) {
+		httpController.PostValue(ctx)
+	})
+
+	//hacer más post que vayan a otra interface
+
 	port := ":8080"
 	log.Printf("Escuchando en el puerto%s\n", port)
 

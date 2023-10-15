@@ -14,6 +14,7 @@ type HTTP interface {
 	PostCompare(ctx *gin.Context)
 	DeleteAllMeasurement(ctx *gin.Context)
 	DeleteEmptyMeasurement(ctx *gin.Context)
+	PostValue(ctx *gin.Context)
 }
 
 type Http struct {
