@@ -89,6 +89,15 @@ func main() {
 		httpController.PostValue(ctx)
 	})
 
+	server.GET("/value/:name", func(ctx *gin.Context) {
+		name := ctx.Param("name")
+		httpController.GetValue(ctx, name)
+	})
+
+	/*	server.POST("/measurementvalue", func(ctx *gin.Context) {
+		httpController.PostMeasurementValue(ctx)
+	})*/
+
 	//hacer más post que vayan a otra interface
 
 	port := ":8080"
