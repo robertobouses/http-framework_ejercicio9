@@ -1,7 +1,7 @@
 package http
 
-/*
 import (
+	"fmt"
 	nethttp "net/http"
 
 	"github.com/gin-gonic/gin"
@@ -16,7 +16,18 @@ func (h *Http) PostMeasurementValue(ctx *gin.Context) {
 	}
 
 	cubic, err := h.service.CalcCubic(measurementValueRequest.ID)
-	amount=
+	if err != nil {
+		ctx.JSON(nethttp.StatusBadRequest, err)
+	}
+	amount, err := h.service.PrintAmount(measurementValueRequest.NAME)
 
+	if err != nil {
+		ctx.JSON(nethttp.StatusBadRequest, err)
+	}
+
+	if float32(cubic) > amount {
+		ctx.JSON(200, fmt.Sprintf("Los metros cúbicos %v son mayores que el importe %v", cubic, amount))
+	} else {
+		ctx.JSON(200, fmt.Sprintf("Los metros cúbicos %v son menores o iguales que el importe %v", cubic, amount))
+	}
 }
-*/

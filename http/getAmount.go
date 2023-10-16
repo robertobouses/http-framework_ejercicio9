@@ -7,12 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Http) GetValue(ctx *gin.Context, name string) {
-	value, err := h.service.PrintValue(name)
+func (h *Http) GetAmount(ctx *gin.Context, name string) {
+	amount, err := h.service.PrintAmount(name)
 	if err != nil {
 		log.Printf("Error al obtener valor", err)
 		ctx.JSON(nethttp.StatusBadRequest, gin.H{"error": err.Error()})
 	}
-	log.Print("valor", value)
-	ctx.JSON(nethttp.StatusOK, value)
+	log.Print("valor", amount)
+	ctx.JSON(nethttp.StatusOK, amount)
 }

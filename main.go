@@ -91,12 +91,12 @@ func main() {
 
 	server.GET("/value/:name", func(ctx *gin.Context) {
 		name := ctx.Param("name")
-		httpController.GetValue(ctx, name)
+		httpController.GetAmount(ctx, name)
 	})
 
-	/*	server.POST("/measurementvalue", func(ctx *gin.Context) {
+	server.POST("/measurementvalue", func(ctx *gin.Context) {
 		httpController.PostMeasurementValue(ctx)
-	})*/
+	})
 
 	//hacer más post que vayan a otra interface
 

@@ -1,3 +1,3 @@
 --extractname_amount.sql:
 
-SELECT amount FROM arithmetic.value WHERE name = $1
+SELECT amount FROM arithmetic.values WHERE name = $1

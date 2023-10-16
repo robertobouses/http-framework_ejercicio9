@@ -15,7 +15,8 @@ type HTTP interface {
 	DeleteAllMeasurement(ctx *gin.Context)
 	DeleteEmptyMeasurement(ctx *gin.Context)
 	PostValue(ctx *gin.Context)
-	GetValue(ctx *gin.Context, name string)
+	GetAmount(ctx *gin.Context, name string)
+	PostMeasurementValue(ctx *gin.Context)
 }
 
 type Http struct {
