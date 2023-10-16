@@ -98,7 +98,9 @@ func main() {
 		httpController.PostMeasurementValue(ctx)
 	})
 
-	//hacer más post que vayan a otra interface
+	server.GET("/order", func(ctx *gin.Context) {
+		httpController.GetNameOrder(ctx)
+	})
 
 	port := ":8080"
 	log.Printf("Escuchando en el puerto%s\n", port)

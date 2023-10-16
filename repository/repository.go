@@ -17,6 +17,7 @@ type REPOSITORY interface {
 	DeleteEmptyMeasurement() error
 	InsertValue(value entity.Value) error
 	ExtractAmount(name string) (float32, error)
+	ExtractValues() ([]entity.Value, error)
 }
 
 type Repository struct {
@@ -29,6 +30,7 @@ type Repository struct {
 	deleteEmptyStmt       *sql.Stmt
 	insertValueStmt       *sql.Stmt
 	extractNameAmountStmt *sql.Stmt
+	extractValuesStmt     *sql.Stmt
 }
 
 //go:embed sql/insert_measurement.sql
@@ -54,6 +56,9 @@ var InsertValueQuery string
 
 //go:embed sql/extractname_amount.sql
 var ExtractNameAmountQuery string
+
+//go:embed sql/extract_values.sql
+var ExtractValuesQuery string
 
 func NewRepository(db *sql.DB) (*Repository, error) {
 	insertStmt, err := db.Prepare(InsertMeasurementQuery)
@@ -95,6 +100,10 @@ func NewRepository(db *sql.DB) (*Repository, error) {
 	if err != nil {
 		return nil, err
 	}
+	extractValuesStmt, err := db.Prepare(ExtractValuesQuery)
+	if err != nil {
+		return nil, err
+	}
 
 	return &Repository{
 		db:                    db,
@@ -106,5 +115,6 @@ func NewRepository(db *sql.DB) (*Repository, error) {
 		deleteEmptyStmt:       deleteEmptyStmt,
 		insertValueStmt:       insertValueStmt,
 		extractNameAmountStmt: extractNameAmountStmt,
+		extractValuesStmt:     extractValuesStmt,
 	}, nil
 }

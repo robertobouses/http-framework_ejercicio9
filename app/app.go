@@ -15,6 +15,7 @@ type APP interface {
 	DeleteEmptyMeasurement() error
 	CreateValue(entity.Value) error
 	PrintAmount(name string) (float32, error)
+	PrintNameOrder() ([]string, error)
 }
 
 type Service struct {
