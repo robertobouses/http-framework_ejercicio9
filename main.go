@@ -102,6 +102,11 @@ func main() {
 		httpController.GetNameOrder(ctx)
 	})
 
+	server.POST("invoiced/:amount", func(ctx *gin.Context) {
+		amount := ctx.Param("amount")
+		httpController.PostInvoiced(ctx, amount)
+	})
+
 	port := ":8080"
 	log.Printf("Escuchando en el puerto%s\n", port)
 

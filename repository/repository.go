@@ -18,6 +18,7 @@ type REPOSITORY interface {
 	InsertValue(value entity.Value) error
 	ExtractAmount(name string) (float32, error)
 	ExtractValues() ([]entity.Value, error)
+	UpdateValue(value entity.Value) (entity.Value, error)
 }
 
 type Repository struct {
