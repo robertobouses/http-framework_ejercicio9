@@ -17,6 +17,7 @@ type APP interface {
 	PrintAmount(name string) (float32, error)
 	PrintNameOrder() ([]string, error)
 	ChangeInvoiced(amount float32) (entity.Value, error)
+	SearchNameValue(nameValueRequest entity.NameValueRequest) ([]string, error)
 }
 
 type Service struct {

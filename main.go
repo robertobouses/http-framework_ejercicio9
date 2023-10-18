@@ -102,9 +102,13 @@ func main() {
 		httpController.GetNameOrder(ctx)
 	})
 
-	server.POST("invoiced/:amount", func(ctx *gin.Context) {
+	server.POST("/invoiced/:amount", func(ctx *gin.Context) {
 		amount := ctx.Param("amount")
 		httpController.PostInvoiced(ctx, amount)
+	})
+
+	server.POST("/name", func(ctx *gin.Context) {
+		httpController.PostNameValue(ctx)
 	})
 
 	port := ":8080"

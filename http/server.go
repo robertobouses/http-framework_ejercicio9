@@ -19,6 +19,7 @@ type HTTP interface {
 	PostMeasurementValue(ctx *gin.Context)
 	GetNameOrder(ctx *gin.Context)
 	PostInvoiced(ctx *gin.Context, amountStr string)
+	PostNameValue(ctx *gin.Context)
 }
 
 type Http struct {

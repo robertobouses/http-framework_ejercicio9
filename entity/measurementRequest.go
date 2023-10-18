@@ -1,5 +1,5 @@
 package entity
 
 type MeasurementRequest struct {
-	IDs []string `json: "ids"`
+	IDs []string `json:"ids"`
 }
