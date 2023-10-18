@@ -1,8 +1,8 @@
 package app
 
 import (
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/robertobouses/http-framework_ejercicio9/entity"
-	"github.com/schollz/fuzzy"
 )
 
 func (s *Service) SearchNameValue(nameValueRequest entity.NameValueRequest) ([]string, error) {
@@ -13,9 +13,10 @@ func (s *Service) SearchNameValue(nameValueRequest entity.NameValueRequest) ([]s
 
 	threshold := 0.6
 	var results []string
+
 	for _, value := range values {
-		matches := fuzzy.Find(nameValueRequest.Name, []string{value.Name})
-		if len(matches) > 0 && matches[0].Score >= threshold {
+		distance := fuzzy.Ratio(nameValueRequest.Name, value.Name)
+		if distance >= threshold {
 			results = append(results, value.Name)
 		}
 	}
